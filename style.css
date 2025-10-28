@@ -1,3 +1,4 @@
+/* --- 1. Reset Básico e Padrões Globais --- */
 * {
     margin: 0;
     padding: 0;
@@ -14,8 +15,11 @@ body {
     align-items: flex-start;
     min-height: 100vh;
     padding: 50px 20px;
+    /* Evita zoom estranho em inputs no iOS */
+    -webkit-text-size-adjust: 100%;
 }
 
+/* --- 2. Container e Estilos Principais --- */
 .app-container {
     width: 100%;
     max-width: 600px;
@@ -32,6 +36,7 @@ header h1 {
     margin-bottom: 25px;
 }
 
+/* Formulário de Adicionar Tarefa */
 #task-form {
     display: flex;
     gap: 10px;
@@ -75,12 +80,13 @@ header h1 {
     background-color: #0056b3;
 }
 
+/* Controles de Filtro e Limpar */
 .controls-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite quebrar linha se não couber */
     gap: 10px;
 }
 
@@ -120,6 +126,7 @@ header h1 {
     background-color: transparent;
 }
 
+/* --- 3. Lista de Tarefas e Itens --- */
 #task-list {
     list-style: none;
     max-height: 300px;
@@ -150,6 +157,7 @@ header h1 {
     cursor: text;
 }
 
+/* Checkbox Minimalista */
 .task-item input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
@@ -184,6 +192,7 @@ header h1 {
     transform: rotate(45deg);
 }
 
+/* Botão Deletar Minimalista */
 .delete-btn {
     background: none;
     border: none;
@@ -205,6 +214,7 @@ header h1 {
     text-decoration: line-through;
 }
 
+/* Rodapé com Contador */
 footer {
     text-align: center;
     margin-top: 25px;
@@ -212,4 +222,72 @@ footer {
     border-top: 1px solid #3b3b42;
     color: #aaa;
     font-size: 14px;
+}
+
+
+/* =====================================================
+--- (NOVO) 4. Responsividade para Celular ---
+=====================================================
+*/
+@media (max-width: 600px) {
+
+    /* Reduz o espaçamento geral da página no celular */
+    body {
+        padding: 20px 10px;
+    }
+
+    /* Reduz o padding interno do container principal */
+    .app-container {
+        padding: 20px;
+    }
+
+    /* Reduz o título para caber melhor */
+    header h1 {
+        font-size: 26px; /* Um pouco menor */
+        margin-bottom: 20px;
+    }
+
+    /* ** A MUDANÇA MAIS IMPORTANTE **
+    Empilha o input e o botão verticalmente
+    */
+    #task-form {
+        flex-direction: column; /* Empilha os itens */
+        gap: 12px;
+    }
+    
+    #task-form button[type="submit"] {
+        width: 100%; /* Faz o botão ocupar a largura total */
+    }
+
+    /* Empilha os filtros e o botão de limpar */
+    .controls-container {
+        flex-direction: column; 
+        align-items: flex-start; /* Alinha tudo à esquerda */
+        gap: 15px;
+    }
+
+    /* Aumenta a área de clique dos botões de filtro */
+    .filter-controls button {
+        padding: 10px 14px;
+    }
+    
+    #clear-completed-btn {
+        padding: 10px 0;
+    }
+
+    /* Ajustes finos nos itens da lista */
+    .task-item {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .task-item span {
+        font-size: 15px; /* Texto um pouco menor para caber */
+    }
+    
+    footer {
+        margin-top: 20px;
+        padding-top: 15px;
+        font-size: 13px;
+    }
 }
