@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app-container">
+        <header>
+            <h1>Checklist</h1>
+        </header>
+
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="O que precisa ser feito?" autocomplete="off">
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <div class="controls-container">
+            <div class="filter-controls">
+                <button class.name="filter-btn" id="filter-all" class="active">Todos</button>
+                <button class.name="filter-btn" id="filter-pending">Pendentes</button>
+                <button class.name="filter-btn" id="filter-completed">Concluídos</button>
+            </div>
+            <button id="clear-completed-btn">Limpar Concluídas</button>
+        </div>
+
+        <ul id="task-list">
+        </ul>
+
+        <footer>
+            <p id="task-counter">Você tem 0 tarefas pendentes.</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
